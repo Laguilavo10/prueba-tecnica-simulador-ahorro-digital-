@@ -28,13 +28,17 @@ export default async function ProductsPage({
   const nameFilter = resolvedParams?.name?.trim().toLowerCase() ?? ''
   const requestedType = resolvedParams?.type?.trim().toLowerCase() ?? ''
 
-  const apiUrl = process.env.API_URL
+  const apiUrl = (process.env.API_URL ?? 'http://localhost:3001').replace(
+    /\/$/,
+    ''
+  )
 
-  const typesResponse = await fetch(`${apiUrl}/api/products/types`)
+  const typesResponse = await fetch(`${apiUrl}/api/products/types`, {
+    cache: 'no-store'
+  })
 
   const typesPayload = (await typesResponse.json()) as ProductTypesApiResponse
   const availableTypes = typesPayload.data
-
 
   const paramsProduct = new URLSearchParams()
 
@@ -49,7 +53,7 @@ export default async function ProductsPage({
     paramsProduct.toString() ? `?${paramsProduct.toString()}` : ''
   }`
 
-  const productsResponse = await fetch(productsUrl)
+  const productsResponse = await fetch(productsUrl, { cache: 'no-store' })
   const productsPayload = (await productsResponse.json()) as ProductsApiResponse
 
   return (

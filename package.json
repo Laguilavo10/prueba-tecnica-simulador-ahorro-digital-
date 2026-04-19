@@ -1,29 +1,16 @@
 {
-  "name": "prueba-michael-page",
-  "version": "0.1.0",
+  "name": "prueba-michael-page-monorepo",
+  "version": "1.0.0",
   "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "@heroui/react": "^3.0.3",
-    "@heroui/styles": "^3.0.3",
-    "next": "16.2.4",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "react-hook-form": "^7.72.1"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.4",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "dev": "npm run dev --workspace @apps/frontend",
+    "build": "npm run build --workspace @apps/frontend",
+    "start": "npm run start --workspace @apps/frontend",
+    "lint": "npm run lint --workspace @apps/frontend",
+    "dev:frontend": "npm run dev --workspace @apps/frontend",
+    "dev:backend": "npm run start:dev --workspace @apps/backend"
   }
 }
