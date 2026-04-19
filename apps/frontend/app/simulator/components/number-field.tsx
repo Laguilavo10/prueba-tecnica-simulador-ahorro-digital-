@@ -29,10 +29,7 @@ export function NumberField({
 }: NumberFieldProps) {
   return (
     <div className='space-y-2'>
-      <label
-        className='block text-sm font-semibold text-slate-700'
-        htmlFor={id}
-      >
+      <label className='field-label' htmlFor={id}>
         {label}
       </label>
       <Input
@@ -49,7 +46,7 @@ export function NumberField({
         placeholder={placeholder}
       />
       {errorMessage ? (
-        <p className='text-xs text-rose-600'>{errorMessage}</p>
+        <p className='text-error text-xs'>{errorMessage}</p>
       ) : null}
     </div>
   )

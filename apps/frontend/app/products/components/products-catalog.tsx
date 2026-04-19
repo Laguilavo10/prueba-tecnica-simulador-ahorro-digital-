@@ -20,24 +20,16 @@ export function ProductsCatalog({
   currentNameFilter,
   currentTypeFilter
 }: ProductsCatalogProps) {
-  const {
-    nameFilter,
-    setNameFilter,
-    typeFilter,
-    setTypeFilter,
-    typeLabel
-  } = useProductsCatalog({ currentNameFilter, currentTypeFilter })
+  const { nameFilter, setNameFilter, typeFilter, setTypeFilter, typeLabel } =
+    useProductsCatalog({ currentNameFilter, currentTypeFilter })
 
   return (
     <section className='space-y-6'>
-      <Card className='overflow-hidden border border-white/60 bg-white/80 backdrop-blur'>
+      <Card className='glass-card overflow-hidden'>
         <Card.Content className='p-5 md:p-6'>
           <div className='grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end'>
             <div className='space-y-2'>
-              <label
-                className='text-sm font-semibold text-slate-700'
-                htmlFor='search-name'
-              >
+              <label className='field-label' htmlFor='search-name'>
                 Buscar por nombre
               </label>
               <Input
@@ -52,9 +44,7 @@ export function ProductsCatalog({
 
             <div className='rounded-xl border border-slate-200/80 bg-slate-50/80 p-3'>
               <div className='mb-2 flex items-center justify-between gap-3 lg:mb-1'>
-                <p className='text-sm font-semibold text-slate-700'>
-                  Filtrar por tipo
-                </p>
+                <p className='field-label'>Filtrar por tipo</p>
                 <Button
                   isDisabled={!typeFilter}
                   onPress={() => setTypeFilter(null)}
@@ -82,7 +72,7 @@ export function ProductsCatalog({
                     onPress={() => setTypeFilter(type)}
                     className={
                       typeFilter === type
-                        ? 'bg-slate-900 text-white'
+                        ? 'btn-brand'
                         : 'bg-white text-slate-800'
                     }
                   >

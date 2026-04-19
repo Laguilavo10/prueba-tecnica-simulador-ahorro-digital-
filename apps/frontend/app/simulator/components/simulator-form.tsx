@@ -59,7 +59,7 @@ export function SimulatorForm() {
 
   return (
     <section className='space-y-6'>
-      <Card className='border border-white/70 bg-white/85 backdrop-blur'>
+      <Card className='glass-card'>
         <Card.Content className='space-y-5 p-5 md:p-6'>
           <form
             className='grid gap-4 md:grid-cols-3'
@@ -162,7 +162,7 @@ export function SimulatorForm() {
               )}
             />
             <div className='md:col-span-3 flex flex-wrap items-center gap-3 pt-1 justify-end'>
-              <p className='text-xs text-slate-600'>{helperText}</p>
+              <p className='text-muted text-xs'>{helperText}</p>
               <span
                 title={isSubmitDisabled ? disabledSubmitHint : ''}
                 className={
@@ -173,7 +173,7 @@ export function SimulatorForm() {
               >
                 <Button
                   type='submit'
-                  className='bg-slate-900 text-white'
+                  className='btn-brand'
                   isDisabled={isSubmitDisabled}
                 >
                   Calcular rentabilidad
@@ -188,7 +188,7 @@ export function SimulatorForm() {
         <Card className='border border-emerald-100 bg-emerald-50/70'>
           <Card.Content className='space-y-4 p-5 md:p-6'>
             <div className='flex items-center justify-between gap-4'>
-              <h2 className='text-lg font-semibold text-slate-900'>
+              <h2 className='text-primary text-lg font-semibold'>
                 Resultado estimado
               </h2>
               <span className='rounded-full bg-white px-3 py-1 text-xs font-semibold text-emerald-700'>
@@ -196,7 +196,7 @@ export function SimulatorForm() {
               </span>
             </div>
 
-            <p className=' text-sm text-slate-700'>
+            <p className='text-secondary text-sm'>
               Para un monto inicial de{' '}
               <strong>{formatCurrencyCOP(result.initialAmount)}</strong>, con un
               aporte mensual de{' '}
@@ -207,26 +207,26 @@ export function SimulatorForm() {
 
             <div className='grid gap-3 md:grid-cols-3'>
               <div className='rounded-lg bg-white p-4'>
-                <p className='text-xs text-slate-500'>Valor futuro estimado</p>
-                <p className='mt-1 text-xl font-semibold text-slate-900'>
+                <p className='text-muted text-xs'>Valor futuro estimado</p>
+                <p className='text-primary mt-1 text-xl font-semibold'>
                   {formatCurrencyCOP(result.futureValue)}
                 </p>
               </div>
               <div className='rounded-lg bg-white p-4'>
-                <p className='text-xs text-slate-500'>Total aportado</p>
-                <p className='mt-1 text-xl font-semibold text-slate-900'>
+                <p className='text-muted text-xs'>Total aportado</p>
+                <p className='text-primary mt-1 text-xl font-semibold'>
                   {formatCurrencyCOP(result.totalContributions)}
                 </p>
               </div>
               <div className='rounded-lg bg-white p-4'>
-                <p className='text-xs text-slate-500'>Interes estimado</p>
+                <p className='text-muted text-xs'>Interes estimado</p>
                 <p className='mt-1 text-xl font-semibold text-emerald-700'>
                   {formatCurrencyCOP(result.estimatedInterest)}
                 </p>
               </div>
             </div>
 
-            <p className='text-xs text-slate-600'>
+            <p className='text-muted text-xs'>
               Formula aplicada: valor futuro = aporte inicial x (1 + r)^n +
               aporte mensual x (((1 + r)^n - 1) / r), donde r es la tasa mensual
               y n el numero de meses.

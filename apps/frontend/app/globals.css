@@ -4,6 +4,29 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --app-bg-gradient: radial-gradient(
+    circle at top left,
+    #e0f2fe,
+    #f8fafc 55%,
+    #fefce8
+  );
+
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #334155;
+  --color-text-muted: #475569;
+  --color-text-error: #e11d48;
+
+  --color-card-bg: rgb(255 255 255 / 0.85);
+  --color-card-border: rgb(255 255 255 / 0.7);
+  --color-brand-dark: #0f172a;
+  --color-brand-light-text: #ffffff;
+
+  --color-kicker-sky-bg: #e0f2fe;
+  --color-kicker-sky-text: #0369a1;
+  --color-kicker-emerald-bg: #d1fae5;
+  --color-kicker-emerald-text: #047857;
+  --color-kicker-cyan-bg: #cffafe;
+  --color-kicker-cyan-text: #0e7490;
 }
 
 @theme inline {
@@ -24,4 +47,80 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), 'Segoe UI', sans-serif;
+}
+
+@layer components {
+  .page-shell {
+    @apply min-h-screen px-4 py-10 md:px-8;
+    background-image: var(--app-bg-gradient);
+  }
+
+  .page-content {
+    @apply mx-auto w-full space-y-8;
+  }
+
+  .page-header {
+    @apply space-y-3;
+  }
+
+  .page-kicker {
+    @apply inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em];
+  }
+
+  .kicker-sky {
+    background-color: var(--color-kicker-sky-bg);
+    color: var(--color-kicker-sky-text);
+  }
+
+  .kicker-emerald {
+    background-color: var(--color-kicker-emerald-bg);
+    color: var(--color-kicker-emerald-text);
+  }
+
+  .kicker-cyan {
+    background-color: var(--color-kicker-cyan-bg);
+    color: var(--color-kicker-cyan-text);
+  }
+
+  .page-title {
+    @apply text-3xl font-bold tracking-tight md:text-4xl;
+    color: var(--color-text-primary);
+  }
+
+  .page-subtitle {
+    @apply max-w-3xl text-base leading-7 md:text-lg;
+    color: var(--color-text-secondary);
+  }
+
+  .glass-card {
+    border: 1px solid var(--color-card-border);
+    background-color: var(--color-card-bg);
+    @apply backdrop-blur;
+  }
+
+  .field-label {
+    @apply block text-sm font-semibold;
+    color: var(--color-text-secondary);
+  }
+
+  .text-primary {
+    color: var(--color-text-primary);
+  }
+
+  .text-secondary {
+    color: var(--color-text-secondary);
+  }
+
+  .text-muted {
+    color: var(--color-text-muted);
+  }
+
+  .text-error {
+    color: var(--color-text-error);
+  }
+
+  .btn-brand {
+    background-color: var(--color-brand-dark);
+    color: var(--color-brand-light-text);
+  }
 }

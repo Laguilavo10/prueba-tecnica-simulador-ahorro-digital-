@@ -91,7 +91,7 @@ export function OnboardingForm() {
 
   return (
     <section className='space-y-6'>
-      <Card className='border border-white/70 bg-white/85 backdrop-blur'>
+      <Card className='glass-card'>
         <Card.Content className='space-y-5 p-5 md:p-6'>
           <form
             className='grid gap-5'
@@ -112,9 +112,7 @@ export function OnboardingForm() {
               }}
               render={({ field }) => (
                 <div className='space-y-2'>
-                  <label className='block text-sm font-semibold text-slate-700'>
-                    Nombre completo
-                  </label>
+                  <label className='field-label'>Nombre completo</label>
                   <Input
                     value={field.value}
                     onChange={(event) => field.onChange(event.target.value)}
@@ -125,7 +123,7 @@ export function OnboardingForm() {
                     className={'w-full'}
                   />
                   {errors.fullName ? (
-                    <p className='text-xs text-rose-600'>
+                    <p className='text-error text-xs'>
                       {errors.fullName.message}
                     </p>
                   ) : null}
@@ -146,9 +144,7 @@ export function OnboardingForm() {
               }}
               render={({ field }) => (
                 <div className='space-y-2'>
-                  <label className='block text-sm font-semibold text-slate-700'>
-                    Documento
-                  </label>
+                  <label className='field-label'>Documento</label>
                   <Input
                     value={field.value}
                     onChange={(event) => field.onChange(event.target.value)}
@@ -159,7 +155,7 @@ export function OnboardingForm() {
                     className={'w-full'}
                   />
                   {errors.document ? (
-                    <p className='text-xs text-rose-600'>
+                    <p className='text-error text-xs'>
                       {errors.document.message}
                     </p>
                   ) : null}
@@ -179,9 +175,7 @@ export function OnboardingForm() {
               }}
               render={({ field }) => (
                 <div className='space-y-2'>
-                  <label className='block text-sm font-semibold text-slate-700'>
-                    Correo electronico
-                  </label>
+                  <label className='field-label'>Correo electronico</label>
                   <Input
                     type='email'
                     value={field.value}
@@ -193,22 +187,20 @@ export function OnboardingForm() {
                     className={'w-full'}
                   />
                   {errors.email ? (
-                    <p className='text-xs text-rose-600'>
-                      {errors.email.message}
-                    </p>
+                    <p className='text-error text-xs'>{errors.email.message}</p>
                   ) : null}
                 </div>
               )}
             />
 
             <div className='flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-3'>
-              <p className='text-xs text-slate-600'>
+              <p className='text-muted text-xs'>
                 Completa tus datos para enviar la solicitud. La verificacion
                 anti-bot se realiza automaticamente en segundo plano.
               </p>
               <Button
                 type='submit'
-                className='bg-slate-900 text-white'
+                className='btn-brand'
                 isDisabled={isSubmitting}
               >
                 Registrar intencion
@@ -216,9 +208,7 @@ export function OnboardingForm() {
             </div>
 
             {errors.recaptcha ? (
-              <p className='text-xs text-rose-600'>
-                {errors.recaptcha.message}
-              </p>
+              <p className='text-error text-xs'>{errors.recaptcha.message}</p>
             ) : null}
           </form>
         </Card.Content>
@@ -227,10 +217,10 @@ export function OnboardingForm() {
       {submissionSuccess && (
         <Card className='border border-sky-200 bg-sky-50/70'>
           <Card.Content className='space-y-2 p-5 md:p-6'>
-            <h2 className='text-lg font-semibold text-slate-900'>
+            <h2 className='text-primary text-lg font-semibold'>
               Solicitud registrada con exito
             </h2>
-            <p className='text-sm text-slate-700'>
+            <p className='text-secondary text-sm'>
               Gracias, <strong>{submissionSuccess.fullName}</strong>. Tu codigo
               de solicitud es <strong>{submissionSuccess.code}</strong>.
             </p>
