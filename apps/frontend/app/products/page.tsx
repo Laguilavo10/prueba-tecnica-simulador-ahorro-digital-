@@ -1,3 +1,4 @@
+import { API_URL } from '@/const/env-variables'
 import { ProductsCatalog } from './components/products-catalog'
 
 import type { ProductType, SavingsProduct } from '@/types/products'
@@ -28,12 +29,7 @@ export default async function ProductsPage({
   const nameFilter = resolvedParams?.name?.trim().toLowerCase() ?? ''
   const requestedType = resolvedParams?.type?.trim().toLowerCase() ?? ''
 
-  const apiUrl = (process.env.API_URL ?? 'http://localhost:3001').replace(
-    /\/$/,
-    ''
-  )
-
-  const typesResponse = await fetch(`${apiUrl}/api/products/types`, {
+  const typesResponse = await fetch(`${API_URL}/api/products/types`, {
     cache: 'no-store'
   })
 
@@ -49,7 +45,7 @@ export default async function ProductsPage({
     paramsProduct.set('type', requestedType)
   }
 
-  const productsUrl = `${apiUrl}/api/products${
+  const productsUrl = `${API_URL}/api/products${
     paramsProduct.toString() ? `?${paramsProduct.toString()}` : ''
   }`
 

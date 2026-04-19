@@ -8,6 +8,7 @@ import {
   simulateRecaptchaToken,
   type OnboardingFormValues
 } from '../lib/onboarding'
+import { API_URL } from '@/const/env-variables'
 
 interface SubmissionSuccess {
   code: string
@@ -22,10 +23,6 @@ const defaultValues: OnboardingFormValues = {
 }
 
 export function OnboardingForm() {
-  const apiUrl =
-    process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '') ??
-    'http://localhost:3001'
-
   const [submissionSuccess, setSubmissionSuccess] =
     useState<SubmissionSuccess | null>(null)
 
@@ -51,7 +48,7 @@ export function OnboardingForm() {
     const recaptchaToken = simulateRecaptchaToken()
     setValue('recaptcha', recaptchaToken)
 
-    const response = await fetch(`${apiUrl}/api/onboarding`, {
+    const response = await fetch(`${API_URL}/api/onboarding`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
