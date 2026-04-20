@@ -50,7 +50,14 @@ Adicionalmente, se implemento el plus de separar frontend y backend:
 
 ## Instalacion
 
-Desde la raiz del repositorio:
+1. Clona el repositorio:
+
+```bash
+git clone https://github.com/Laguilavo10/prueba-tecnica-simulador-ahorro-digital-
+```
+
+
+2. Instala dependencias:
 
 ```bash
 npm install
